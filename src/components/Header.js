@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import {Link } from 'react-router-dom';
 
 function Header(){
     return (
@@ -22,16 +23,17 @@ function Header(){
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" 
+          <Typography component={Link} to='/' variant="h5" 
           sx={{
             flexGrow: 1,
-            color: "black",
+            color: "white",
             textAlign: 'left',
+            fontFamily: 'unset'
             }}>
             RMP Aeration
           </Typography>
-          <Button color="inherit">Services</Button>
-          <Button color="inherit">About</Button>
+          <Button component={Link} to='/services' color="inherit">Services</Button>
+          <Button component={Link} to='/about' color="inherit">About</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
