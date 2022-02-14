@@ -7,7 +7,9 @@ function BodyLeft(){
         sx={{
             borderRight: "thick double #32a1ce;",
             paddingTop: "50px",
-            paddingRight: "20px"
+            paddingRight: "20px",
+            
+            
         }}>
             <Typography
              variant="h3">

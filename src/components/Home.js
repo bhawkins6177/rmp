@@ -10,7 +10,8 @@ function Home(){
         sx={{
           display: "flex",
           flexDirection: 'row',
-          justifyContent: "space-evenly"
+          justifyContent: "space-evenly",
+          paddingTop: '20px',
         }}>
           <BodyLeft />
           <BodyRight />
