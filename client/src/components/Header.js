@@ -8,8 +8,13 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {Link } from 'react-router-dom';
+import { Avatar } from '@mui/material';// or try /core
 
 function Header(){
+
+  const user = false;
+
+
     return (
  <Box sx={{ 
    flexGrow: 1,
@@ -33,10 +38,20 @@ function Header(){
             fontFamily: 'unset'
             }}>
             RMP Aeration
-          </Typography>
+          </Typography>{ user ? (
+            <>
+            <Avatar alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+            <Typography variant="h6">{user.result.name}</Typography>
+            <Button>Logout</Button>
+            </>
+          ) :(
+            <Button component={Link} to="/auth"color="inherit">Login</Button>
+          )
+          }
+          
           <Button component={Link} to='/services' color="inherit">Services</Button>
           <Button component={Link} to='/about' color="inherit">About</Button>
-          <Button color="inherit">Login</Button>
+          
         </Toolbar>
       </AppBar>
     </Box>
