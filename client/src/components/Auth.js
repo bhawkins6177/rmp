@@ -1,16 +1,33 @@
 import {Container,Avatar, Button, Grid, Paper, Typography, TextField } from "@mui/material"
 import LockIcon from '@mui/icons-material/Lock';
+import { useState } from "react";
+import {GoogleLogin} from 'react-google-login'
 
 function Auth(){
     
     // when the screen is smaller the padding for the form elements goes away on the left and right
-    const isSignUp = true;
-
+    
+    const [isSignUp, isSignUpState] = useState(false)
     function handleSubmit(){
 
     }
 
     function handleChange(){
+
+    }
+
+    function switchMode(){
+        isSignUpState(!isSignUp)
+        // setIsSignUp((prevIsSignUp)=> !prevIsSignUp);
+    }
+
+    async function googleSuccess(res){
+        console.log(res)
+    }
+    
+    function googleFailure(err){
+        console.log(err)
+        console.log('Google Sign in failed')
 
     }
 
@@ -70,7 +87,47 @@ function Auth(){
                             </Grid>
                             }
                     </Grid>
-                    <Button type="submit" fullWidth variane="contained" color="primary">{isSignUp ? "Sign Up" : "Sign In"}</Button>
+                    <GoogleLogin
+                        clientId="1092979897805-5pu691dqtr2teq8a20bhmjgtidv0v0kd.apps.googleusercontent.com"
+                        render={(renderProps)=>(
+                            <Button 
+                            sx={{
+                                marginTop: '10px',
+                                marginBottom: '10px'
+                            }}
+                                color="primary" 
+                                fullWidth 
+                                onClick={renderProps.onClick} 
+                                disabled={renderProps.disabled} 
+                                variant='contained'
+                               
+                                >
+                                    Google Sign In
+                                </Button>
+                        )}
+                        onSuccess={googleSuccess}
+                        onFailure={googleFailure}
+                        cookiePolicy="single_host_origin"
+                    />
+                    <Button 
+                    sx={{
+                        marginTop: '10px',
+                        marginBottom: '10px'
+                    }}
+                    variant='contained' 
+                    type="submit" 
+                    fullWidth 
+                    color="primary"
+
+                    
+                    >{isSignUp ? "Sign Up" : "Sign In"}</Button>
+                    <Grid container justifyContent={'flex-end'}>
+                            <Grid item>
+                                <Button onClick={switchMode}>
+                                    { isSignUp ? 'Already have an account? Sign in!': "Don't have an account? Sign up!"}
+                                </Button>
+                            </Grid>
+                    </Grid>
                 </form>
             </Paper>
         </Container>
