@@ -2,6 +2,7 @@ import {Container,Avatar, Button, Grid, Paper, Typography, TextField } from "@mu
 import LockIcon from '@mui/icons-material/Lock';
 import { useState } from "react";
 import {GoogleLogin} from 'react-google-login'
+import GoogleIcon from '@mui/icons-material/Google';
 
 function Auth(){
     
@@ -40,7 +41,7 @@ function Auth(){
                 alignItems: 'center',
                 padding: '35px'
             }}>
-                <Avatar >
+                <Avatar>
                     <LockIcon />
                 </Avatar>
                 <Typography variant='h5'
@@ -48,23 +49,19 @@ function Auth(){
                     paddingBottom: '20px'
                 }}
                 >{isSignUp ? 'Sign Up': 'Sign In'}</Typography>
-                <form  onSubmit={handleSubmit} sx={{
-    
-                    
-                    padding: '10px,10px,10px,10px'
-                }}>
+                <form  onSubmit={handleSubmit}>
                     <Grid container spacing={2}
                     sx={{
-                        padding: '10px, 10px, 10px, 10px,'
+                        padding: '30px'
                     }}
                     >
                         {
                             isSignUp && (
                                 <>
-                                    <Grid item xs={6} md={12}>
+                                    <Grid item xs={6} md={6}>
                                         <TextField name='firstName' label='First Name' onChange={handleChange} autoFocus xs={6} variant='outlined'/>
                                     </Grid>
-                                    <Grid item  xs={6} md={12}>
+                                    <Grid item  xs={6} md={6}>
                                         <TextField name='lastName' label='Last Name' onChange={handleChange} autoFocus xs={6} variant='outlined'/>
                                     </Grid>
                                     <Grid  item xs={6} md={12}>
@@ -73,6 +70,7 @@ function Auth(){
                                     <Grid item xs={6} md={12}>
                                         <TextField type="text" name='adress' label='Address' onChange={handleChange} autoFocus xs={6} variant='outlined'/>
                                     </Grid>
+                                    
                                 </>
                             )}
                             <Grid item xs={6} md={12}>
@@ -88,19 +86,16 @@ function Auth(){
                             }
                     </Grid>
                     <GoogleLogin
+                        
                         clientId="1092979897805-5pu691dqtr2teq8a20bhmjgtidv0v0kd.apps.googleusercontent.com"
                         render={(renderProps)=>(
                             <Button 
-                            sx={{
-                                marginTop: '10px',
-                                marginBottom: '10px'
-                            }}
                                 color="primary" 
                                 fullWidth 
                                 onClick={renderProps.onClick} 
                                 disabled={renderProps.disabled} 
                                 variant='contained'
-                               
+                                startIcon={<GoogleIcon />}
                                 >
                                     Google Sign In
                                 </Button>
