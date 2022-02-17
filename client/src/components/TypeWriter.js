@@ -8,7 +8,7 @@ function TypeWriter(){
         options={{
             strings: [
               "Lawn Care",
-              "Aeeration",
+              "Aeration",
               "Seeding",
               "Great Prices",
             ],

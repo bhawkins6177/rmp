@@ -3,11 +3,12 @@ import LockIcon from '@mui/icons-material/Lock';
 import { useState } from "react";
 import {GoogleLogin} from 'react-google-login'
 import GoogleIcon from '@mui/icons-material/Google';
+import { useDispatch } from 'react-redux'; 
 
 function Auth(){
     
     // when the screen is smaller the padding for the form elements goes away on the left and right
-    
+    const dispatch = useDispatch();
     const [isSignUp, isSignUpState] = useState(false)
     function handleSubmit(){
 
@@ -23,7 +24,16 @@ function Auth(){
     }
 
     async function googleSuccess(res){
-        console.log(res)
+       const result = res?.profileObj;
+       const token = res?.tokenId;
+
+       try {
+
+        dispatch({type: 'AUTH', data:{result, token}})
+       } catch(err){
+           console.log(err)
+       }
+
     }
     
     function googleFailure(err){

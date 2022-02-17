@@ -1,5 +1,6 @@
 
 import * as React from 'react';
+import {useState, useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,12 +8,24 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import {Link } from 'react-router-dom';
 import { Avatar } from '@mui/material';// or try /core
+import {Link, useNavigate, useLocation} from 'react-router-dom';
 
 function Header(){
+  const navigate = useNavigate();
+  
+  const location = useLocation();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));// set the defaut state to the user in localstorage if it exists
 
-  const user = false;
+
+  useEffect(()=> {
+    const token = user?.token
+
+    setUser(JSON.parse(localStorage.getItem('profile')))
+},[location]);
+  console.log(user)
+  // const user = false;
+
 
 
     return (
