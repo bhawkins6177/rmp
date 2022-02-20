@@ -4,7 +4,6 @@ import Typewriter from "typewriter-effect";
 function TypeWriter(){
     return(
         <Typewriter 
-        color= "secondary"
         options={{
             strings: [
               "Lawn Care",

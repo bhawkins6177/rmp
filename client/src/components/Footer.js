@@ -12,7 +12,10 @@ function Footer(){
             width: '100%',
             position: 'fixed',
             bottom: 0, }}>
-        <AppBar position="static">
+        <AppBar position="static"
+        sx={{
+          background: 'transparent', boxShadow: 'none'
+        }}>
           <Toolbar sx={{
             justifyContent: "space-evenly"
         }}>

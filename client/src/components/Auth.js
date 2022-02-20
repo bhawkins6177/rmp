@@ -4,18 +4,44 @@ import { useState } from "react";
 import {GoogleLogin} from 'react-google-login'
 import GoogleIcon from '@mui/icons-material/Google';
 import { useDispatch } from 'react-redux'; 
+import {useNavigate} from 'react-router-dom';
+import {signin, signup} from '../actions/auth'
 
 function Auth(){
+    
     
     // when the screen is smaller the padding for the form elements goes away on the left and right
     const dispatch = useDispatch();
     const [isSignUp, isSignUpState] = useState(false)
-    function handleSubmit(){
+    const navigate = useNavigate();
+    const initialState = {
+        firstName:"",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        address: "",
+        tel: ""
+    }
+    const [formData, setFormData] = useState(initialState)
 
+    function handleSubmit(e){
+        e.preventDefault()
+        console.log(formData)
+
+        if(isSignUp){       
+            dispatch(signup(formData, navigate))
+          //  navigate('/')
+       } else {
+            dispatch(signin(formData, navigate))
+           // navigate('/')
+            
+       }
+        
     }
 
-    function handleChange(){
-
+    function handleChange(e){
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     function switchMode(){
@@ -30,6 +56,7 @@ function Auth(){
        try {
 
         dispatch({type: 'AUTH', data:{result, token}})
+        navigate('/')// used to be history.push('/')
        } catch(err){
            console.log(err)
        }
@@ -78,7 +105,7 @@ function Auth(){
                                         <TextField type="tel" name='phone' label='Phone number' onChange={handleChange} autoFocus xs={6} variant='outlined'/>
                                     </Grid>
                                     <Grid item xs={6} md={12}>
-                                        <TextField type="text" name='adress' label='Address' onChange={handleChange} autoFocus xs={6} variant='outlined'/>
+                                        <TextField type="text" name='address' label='Address' onChange={handleChange} autoFocus xs={6} variant='outlined'/>
                                     </Grid>
                                     
                                 </>

@@ -10,13 +10,13 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Avatar } from '@mui/material';// or try /core
 import {Link, useNavigate, useLocation} from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
 function Header(){
   const navigate = useNavigate();
   
   const location = useLocation();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));// set the defaut state to the user in localstorage if it exists
-
+  const dispatch = useDispatch();
 
   useEffect(()=> {
     const token = user?.token
@@ -26,13 +26,20 @@ function Header(){
   console.log(user)
   // const user = false;
 
-
+  function logout(){
+    dispatch({type:'LOGOUT'})
+    setUser(null)
+    navigate('/')
+  }
 
     return (
  <Box sx={{ 
    flexGrow: 1,
-   paddingBottom: '50px' }}>
-      <AppBar position="static">
+   paddingBottom: '20px'}}>
+      <AppBar position="static"
+      sx={{
+        background: 'transparent', boxShadow: 'none'
+      }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -41,21 +48,21 @@ function Header(){
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            
           </IconButton>
-          <Typography component={Link} to='/' variant="h5" 
+          <Typography fontFamily={'fantasy'} component={Link} to='/' variant="h5" 
           sx={{
+          
             flexGrow: 1,
             color: "white",
             textAlign: 'left',
-            fontFamily: 'unset'
+            fontStyle: 'italic',
             }}>
             RMP Aeration
           </Typography>{ user ? (
             <>
-            <Avatar alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-            <Typography variant="h6">{user.result.name}</Typography>
-            <Button>Logout</Button>
+            <Typography variant="h6">{`Welcome ${user.result.name.split(' ')}!`}</Typography>
+            <Button color="inherit" onClick={logout}>Logout</Button>
             </>
           ) :(
             <Button component={Link} to="/auth"color="inherit">Login</Button>

@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 
 app.use(cors());
 
-app.use('/', userRoutes);
+app.use('/user', userRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://bhawkins6177:noodle67@cluster0.jyonl.mongodb.net/rmp?retryWrites=true&w=majority'
 

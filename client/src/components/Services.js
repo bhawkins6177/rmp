@@ -9,46 +9,55 @@ function Services(){
             justifyContent="center"
             alignItems="center">
                 <Grid item xs={6} md={4}> 
-                    <Card>
+                    <Card sx={{
+
+                        backgroundColor:"rgba(0,0,0,.15)"
+                        
+                    }}>
                         <CardHeader
                             title={'Basic'}
                             
                             sx={{
-                                backgroundColor: '#00FFFF',
-                                color: '#3F00FF',
+                                background: 'transparent',
+                                color: 'white',
                             }}
                         />
                         <CardContent>
                             <Box>
                                 <Typography variant='h4'
                                 sx={{
-                                    fontWeight: 'Bold'
+                                    fontWeight: 'Bold',
+                                    color: '#D6D5CB',
                                 }}
                                 >
                                     $45
                                 </Typography>
-                                <Typography>
+                                <Typography sx={{
+                                    color: '#D6D5CB',
+                                }}>
                                     Our base product.
                                     <br/>
                                     includes airation for an average sized yard.
                                     <br/>
                                     
                                 </Typography>
-                                <Button fullWidth >Buy Now!</Button>
+                                <Button color="inherit" >Buy Now!</Button>
                             </Box>
                         </CardContent>
 
                     </Card>
                 </Grid>
                 <Grid item xs={6} md={4}>
-                    <Card>
+                    <Card sx ={{
+                        backgroundColor:"rgba(0,0,0,.15)",
+                    }}>
                         <CardHeader
                         action={<StarIcon />}
                             title={'Pro'}
                             
                             sx={{
-                                backgroundColor: '#00FFFF',
-                                color: '#3F00FF',
+                                
+                                color: 'white',
                             }}
                         
                             
@@ -58,12 +67,15 @@ function Services(){
                             <Box>
                                 <Typography variant='h4'
                                 sx={{
-                                    fontWeight: 'Bold'
+                                    fontWeight: 'Bold',
+                                    color: '#D6D5CB'
                                 }}
                                 >
                                     $55
                                 </Typography>
-                                <Typography>
+                                <Typography sx={{
+                                    color: '#D6D5CB'
+                                }}>
                                     Our full package!
                                     <br/>
                                     Includes, Airation, Seeding, and Fertilizer
@@ -79,7 +91,7 @@ function Services(){
                                     *Best value!*
                                     <br/>
                                 </Typography>
-                                <Button fullWidth >Buy Now!</Button>
+                                <Button  color="inherit" >Buy Now!</Button>
                             </Box>
                         </CardContent>
                     </Card>
