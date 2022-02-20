@@ -4,9 +4,12 @@ import grass2 from './img/grass2.jpg'
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import TypeWriter from './TypeWriter'
+import MailIcon from '@mui/icons-material/Mail';
+import Link from "@mui/material/Link"
+import IconButton from '@mui/material/IconButton'
+
 
 function AltBody() {
     return(
@@ -15,7 +18,6 @@ function AltBody() {
         justifyContent: 'center',
         display: 'flex',
         position: 'relative',
-       
         color: '#fff',
         mb: 4,
         backgroundSize: 'cover',
@@ -42,6 +44,18 @@ function AltBody() {
               You Can Trust 
             </Typography>
             <TypeWriter />
+            <Typography sx={{
+              paddingBottom: '5px',
+              paddingTop: '50px'
+            }}>
+              Reach out!
+            </Typography>
+            <IconButton size='large' color= "inherit" href="mailto:rpmaeration@gmail.com">
+              <MailIcon />
+            </IconButton>
+              
+            
+            
             
           </Box>
         </Grid>

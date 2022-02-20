@@ -5,6 +5,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import LinkM from "@mui/material/Link";
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -59,7 +60,9 @@ function Header(){
             fontStyle: 'italic',
             }}>
             RMP Aeration
-          </Typography>{ user ? (
+          </Typography>
+          <LinkM underline="none" color="inherit" href="rpmaeration@gmail.com">rpmaeration@gmail.com</LinkM>
+          { user ? (
             <>
             <Typography variant="h6">{`Welcome ${user.result.name.split(' ')}!`}</Typography>
             <Button color="inherit" onClick={logout}>Logout</Button>
